@@ -19,8 +19,7 @@ class Auth extends CI_Controller {
 				if($this->auth_model->getEmail($email)->num_rows() > 0)
 				{					
 					$data = $this->auth_model->getEmail($email)->row();
-					if($this->auth_model->getPerusahaan($data->perusahaan))
-					if (password_verify($this->input->post('password'), $data->password)) {
+					if (md5($this->input->post('password') == $data->password)) {
 						$userdata = array(
 							'id' => $data->id,
 							'email' => $data->email,

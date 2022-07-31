@@ -10,7 +10,7 @@ class Auth_model extends CI_Model {
 		return $this->db->get('pengguna')->row();
 	}
 
-	public function getEmail($emal)
+	public function getEmail($email)
 	{
 		$this->db->where('email', $email);
 		return $this->db->get('tbl_user');
