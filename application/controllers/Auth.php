@@ -16,27 +16,17 @@ class Auth extends CI_Controller {
 			if($this->input->post("email"))
 			{
 				$email = $this->input->post("email");
-			}
-		}
-	}
-
-	public function log()
-	{
-		if ($this->session->userdata('status') !== 'login' ) {
-			if ($this->input->post('username')) {
-				$username = $this->input->post('username');
-				if ($this->auth_model->getUser($username)->num_rows() > 0) {
-					$data = $this->auth_model->getUser($username)->row();
-					$toko = $this->auth_model->getToko();
+				if($this->auth_model->getEmail($email)->num_rows() > 0)
+				{					
+					$data = $this->auth_model->getEmail($email)->row();
+					if($this->auth_model->getPerusahaan($data->perusahaan))
 					if (password_verify($this->input->post('password'), $data->password)) {
 						$userdata = array(
 							'id' => $data->id,
-							'username' => $data->username,
-							'password' => $data->password,
-							'nama' => $data->nama,
-							'role' => $data->role == '1' ? 'admin' : 'kasir',
-							'status' => 'login',
-							'toko' => $toko
+							'email' => $data->email,
+							'nama' => $data->username,
+							'id_perusahaan' => $data->perusahaan,
+							'status' => 'login'
 						);
 						$this->session->set_userdata($userdata);
 						echo json_encode('sukses');

@@ -10,16 +10,10 @@ class Auth_model extends CI_Model {
 		return $this->db->get('pengguna')->row();
 	}
 
-	public function getUser($username)
+	public function getEmail($emal)
 	{
-		$this->db->where('username', $username);
-		return $this->db->get('pengguna');
-	}
-
-	public function getToko()
-	{
-		$this->db->select('nama, alamat');
-		return $this->db->get('toko')->row();
+		$this->db->where('email', $email);
+		return $this->db->get('tbl_user');
 	}
 
 }
