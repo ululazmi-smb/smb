@@ -49,7 +49,7 @@
             <div class="small-box bg-warning">
               <div class="inner">
                 <h3 id="transaksi_terakhir">0</h3>
-                <p>Produk Transaksi Terakhir</p>
+                <p>Total Pemasukan</p>
               </div>
               <div class="icon">
                 <i class="fas fa-money-bill"></i>
@@ -63,7 +63,7 @@
             <div class="small-box bg-danger">
               <div class="inner">
                 <h3 id="stok_hari">0</h3>
-                <p>Stok Masuk Hari Ini</p>
+                <p>Total Pengeluaran</p>
               </div>
               <div class="icon">
                 <i class="fas fa-archive"></i>
