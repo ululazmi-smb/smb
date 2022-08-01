@@ -42,7 +42,7 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="<?php echo site_url('datamasetr/datapaket') ?>" class="nav-link <?php echo $uri == 'kategori_produk' ? 'active' : 'no' ?>">
+              <a href="<?php echo site_url('datamaster/datapaket') ?>" class="nav-link <?php echo $uri == 'kategori_produk' ? 'active' : 'no' ?>">
                 <i class="far fa-circle nav-icon"></i>
                 <p>
                   Data Paket

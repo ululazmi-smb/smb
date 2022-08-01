@@ -16,6 +16,17 @@ class Auth_model extends CI_Model {
 		return $this->db->get('tbl_user');
 	}
 
+	public function key($key)
+	{
+		$sql = $this->db->get_where("tbl_key", array("key_api" => $key));
+		if($sql->num_rows() > 0)
+		{
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 }
 
 /* End of file Auth_model.php */
