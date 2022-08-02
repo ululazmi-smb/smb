@@ -32,8 +32,8 @@
             </p>
           </a>
         </li>
-        <li class="nav-item has-treeview <?php echo $uri == 'produk' || $uri == 'kategori_produk' || $uri == 'satuan_produk' ? 'menu-open' : 'no' ?>">
-          <a href="#" class="nav-link <?php echo $uri == 'produk' || $uri == 'kategori_produk' || $uri == 'satuan_produk' ? 'active' : 'no' ?>">
+        <li class="nav-item has-treeview <?php echo $uri == 'datamaster' || $uri2 == 'datapaket' || $uri2 == 'datapelanggan' ? 'menu-open' : 'no' ?>">
+          <a href="#" class="nav-link <?php echo $uri == 'datamaster' || $uri2 == 'datapaket' || $uri2 == 'datapelanggan' ? 'active' : 'no' ?>">
             <i class="nav-icon fas fa-address-book"></i>
             <p>
               Data Master
@@ -42,7 +42,7 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="<?php echo site_url('datamaster/datapaket') ?>" class="nav-link <?php echo $uri == 'kategori_produk' ? 'active' : 'no' ?>">
+              <a href="<?php echo site_url('datamaster/datapaket') ?>" class="nav-link <?php echo $uri2 == 'datapaket' ? 'active' : 'no' ?>">
                 <i class="far fa-circle nav-icon"></i>
                 <p>
                   Data Paket
@@ -50,7 +50,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo site_url('datamaster/datapelanggan') ?>" class="nav-link <?php echo $uri == 'satuan_produk' ? 'active' : 'no' ?>">
+              <a href="<?php echo site_url('datamaster/datapelanggan') ?>" class="nav-link <?php echo $uri2 == 'datapelanggan' ? 'active' : 'no' ?>">
                 <i class="far fa-circle nav-icon"></i>
                 <p>
                   Data Pelanggan

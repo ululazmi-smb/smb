@@ -60,42 +60,32 @@
 </div>
 
 <div class="modal fade" id="modal">
-<div class="modal-dialog">
-<div class="modal-content">
-  <div class="modal-header">
-    <h5 class="modal-title">Save Data</h5>
-    <button class="close" data-dismiss="modal">
-      <span>&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <form id="form">
-      <input type="hidden" name="id">
-      <div class="form-group">
-        <label>email</label>
-        <input type="text" class="form-control" placeholder="email" name="email" required>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Pelanggan</h5>
+        <button class="close" data-dismiss="modal">
+          <span>&times;</span>
+        </button>
       </div>
-      <div class="form-group">
-        <label>username</label>
-        <input type="text" class="form-control" placeholder="username" name="username" required>
-      </div>
-      <div class="form-group">
-        <label>password</label>
-        <input type="text" class="form-control" placeholder="password" name="nama">
-      </div>
-      <!-- <div class="form-group">
-        <label>Image</label>
-        <div class="custom-file">
-          <input type="file" class="custom-file-input" id="inputGroupFile01">
-          <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>email</label>
+          <input type="text" id="email" class="form-control" placeholder="email" name="email">
         </div>
-      </div> -->
-      <button class="btn btn-success" type="submit">Save</button>
-      <button class="btn btn-danger" data-dismiss="modal">Close</button>
-    </form>
+        <div class="form-group">
+          <label>username</label>
+          <input type="text" id="username" class="form-control" placeholder="username" name="username">
+        </div>
+        <div class="form-group">
+          <label>password</label>
+          <input type="text" id="password" class="form-control" placeholder="password" name="nama">
+        </div>
+        <button class="btn btn-success" onclick="save()">Save</button>
+        <button class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
   </div>
-</div>
-</div>
 </div>
 <!-- ./wrapper -->
 <?php $this->load->view('includes/footer'); ?>
@@ -106,10 +96,7 @@
 <script src="<?php echo base_url('assets/vendor/adminlte/plugins/sweetalert2/sweetalert2.min.js') ?>"></script>
 <script>
   var readUrl = '<?php echo site_url('pelanggan/read/1') ?>';
-  var addUrl = '<?php echo site_url('pengguna/add') ?>';
-  var deleteUrl = '<?php echo site_url('pengguna/delete') ?>';
-  var editUrl = '<?php echo site_url('pengguna/edit') ?>';
-  var getPenggunaUrl = '<?php echo site_url('pengguna/get_pengguna') ?>';
+  var editUrl = '<?php echo site_url('pelanggan/edit/1') ?>';
 </script>
 <script src="<?php echo base_url('assets/js/pengguna.min.js') ?>"></script>
 </body>

@@ -42,12 +42,18 @@
           <div class="card-body">
             <table class="table w-100 table-bordered table-hover" id="paket">
               <thead>
-                <tr>
-                  <th>No</th>
-                  <th>Paket</th>
-                  <th>Harga</th>
-                  <th class="col-2">Action</th>
-                </tr>
+                <th style="width: 17px;">No</th>
+                <th style="width: 37px;">Nama</th>
+                <th style="width: 76px;">Alamat</th>
+                <th style="width: 68px;">No. Telp.</th>
+                <th style="width: 35px;">Paket</th>
+                <th style="width: 37px;">Harga</th>
+                <th style="width: 79px;">Tanggal Pemasangan</th>
+                <th style="width: 42px;">Jatuh Tempo</th>
+                <th style="width: 40px;">Akun PPPoE</th>
+                <th style="width: 49px;">IP Address</th>
+                <th style="width: 49px;">Status</th>
+                <th style="width: 55px;">Aksi</th>
               </thead>
             </table>
           </div>
@@ -61,28 +67,42 @@
 </div>
 
 <div class="modal fade" id="modal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="title_id">add Data</h5>
-        <button class="close" data-dismiss="modal">
-          <span>&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-          <label>nama</label>
-          <input type="text" id="nama" class="form-control" placeholder="nama" name="nama">
-        </div>
-        <div class="form-group">
-          <label>harga</label>
-          <input type="text" id="harga" class="form-control" placeholder="harga" name="harga">
-        </div>
-        <button class="btn btn-success" onclick="save()">Save</button>
-        <button class="btn btn-danger" data-dismiss="modal">Close</button>
-      </div>
-    </div>
+<div class="modal-dialog">
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title">Save Data</h5>
+    <button class="close" data-dismiss="modal">
+      <span>&times;</span>
+    </button>
   </div>
+  <div class="modal-body">
+    <form id="form">
+      <input type="hidden" name="id">
+      <div class="form-group">
+        <label>email</label>
+        <input type="text" class="form-control" placeholder="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label>username</label>
+        <input type="text" class="form-control" placeholder="username" name="username" required>
+      </div>
+      <div class="form-group">
+        <label>password</label>
+        <input type="text" class="form-control" placeholder="password" name="nama">
+      </div>
+      <!-- <div class="form-group">
+        <label>Image</label>
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="inputGroupFile01">
+          <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+        </div>
+      </div> -->
+      <button class="btn btn-success" type="submit">Save</button>
+      <button class="btn btn-danger" data-dismiss="modal">Close</button>
+    </form>
+  </div>
+</div>
+</div>
 </div>
 <!-- ./wrapper -->
 <?php $this->load->view('includes/footer'); ?>
@@ -92,10 +112,12 @@
 <script src="<?php echo base_url('assets/vendor/adminlte/plugins/jquery-validation/jquery.validate.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/vendor/adminlte/plugins/sweetalert2/sweetalert2.min.js') ?>"></script>
 <script>
-  var readUrl = '<?php echo site_url('datamaster/read/1') ?>';
-  var getUrlPaket = '<?php echo site_url('datamaster/get_paket/1') ?>';
-  var addUrlPaket = '<?php echo site_url('datamaster/add_paket/1') ?>';
+  var readUrl = '<?php echo site_url('datamaster/read_pelanggan/1') ?>';
+  var addUrl = '<?php echo site_url('pengguna/add') ?>';
+  var deleteUrl = '<?php echo site_url('pengguna/delete') ?>';
+  var editUrl = '<?php echo site_url('pengguna/edit') ?>';
+  var getPenggunaUrl = '<?php echo site_url('pengguna/get_pengguna') ?>';
 </script>
-<script src="<?php echo base_url('assets/js/datamasterdatapaket.min.js') ?>"></script>
+<script src="<?php echo base_url('assets/js/datamaster_datapelanggan.min.js') ?>"></script>
 </body>
 </html>

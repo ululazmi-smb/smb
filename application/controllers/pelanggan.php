@@ -11,6 +11,7 @@ class Pelanggan extends CI_Controller {
 		}
 		$this->load->model('Auth_model');
 		$this->load->model('pengguna_model');
+		$this->load->model('paket_perusahaan_model');
 	}
 
 	public function index()
@@ -25,13 +26,10 @@ class Pelanggan extends CI_Controller {
 		$perusahaan = $this->session->userdata('id_perusahaan');
 		if($this->Auth_model->key($key) == false)
 		{
-			
-			$data = array(
-				"error" => "error",
-				"messages" => "error auth api"
-			);
 			$pengguna = array(
-				'data' => $data
+				"error" => "error",
+				"messages" => "error auth api",
+				'data' => array()
 			);
 		} else {
 			if($this->pengguna_model->read($perusahaan)->num_rows() > 0)
@@ -51,6 +49,54 @@ class Pelanggan extends CI_Controller {
 			$pengguna = array(
 				'data' => $data
 			);
+		}
+		echo json_encode($pengguna);
+	}
+
+	public function edit()
+	{
+		header('Content-type: application/json');
+		$key = $this->uri->segment(3);
+		$perusahaan = $this->session->userdata('id_perusahaan');
+		if($this->Auth_model->key($key) == false)
+		{
+			$pengguna = array(
+				"error" => "error",
+				"messages" => "error auth api"
+			);
+		} else {
+			$username = $this->input->post("username");
+			$email = $this->input->post("email");
+			$id_user = $this->input->post("id");
+			$password = $this->input->post("password");
+			if($this->paket_perusahaan_model->read($perusahaan)->num_rows() > 0)
+			{
+			if($this->pengguna_model->cek_email($email)->num_rows() > 0)
+				{
+					$pengguna = array(
+						"error" => "error",
+						"messages" => "email sudah ada"
+					);
+				} else {
+					if($this->pengguna_model->edit($perusahaan, $username, $password, $email, $id_user))
+					{
+						$pengguna = array(
+							"error" => "success",
+							"messages" => ""
+						);
+					} else  {
+						$pengguna = array(
+							"error" => "error",
+							"messages" => "error update"
+						);
+					}
+				}
+			} else {
+				$pengguna = array(
+					"error" => "error",
+					"messages" => "silahkan melakukan pendaftaran paket ke admin agar dapat menggunakan fitur ini"
+				);
+			} 
 		}
 		echo json_encode($pengguna);
 	}
