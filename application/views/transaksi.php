@@ -171,20 +171,10 @@
             </div>
         </div>
         <div class="form-group">
-        <label>user</label>
-          <select class="custom-select" id="inputGroupSelect01">
-                <?php
-                for($i = 2020; $i <= date('Y'); $i++)
-                {
-                  if($i == date("Y"))
-                  {
-                    echo '<option value="'.$i.'" selected>'.$i.'</option>';
-                  } else {
-                    echo '<option value="'.$i.'">'.$i.'</option>';
-                  }
-                }
-                ?>
-              </select>
+          <label>User Tagihan</label>
+          <div class="form-inline">
+            <select id="nama_user" class="form-control select2 col-sm-12" onchange="getNama()"></select>
+          </div>
         </div>
         <button class="btn btn-success" onclick="save()">Save</button>
         <button class="btn btn-danger" data-dismiss="modal">Close</button>
