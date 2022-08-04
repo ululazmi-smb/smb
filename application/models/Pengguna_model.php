@@ -33,6 +33,18 @@ class Pengguna_model extends CI_Model {
 		$this->db->where('username', $email);
 		return $this->db->get($this->table);
 	}
+
+	public function read_user_pengguna_by_id($id, $perusahaan)
+	{
+		$this->db->where(array('id_perusahaan' => $perusahaan, "id_pelanggan" => $id));
+		return $this->db->get($this->table);
+	}
+
+	public function add_pengguna($data)
+	{
+		$sql = $this->db->insert($this->table, $data);
+		return $sql;
+	}
 }
 
 /* End of file Pengguna_model.php */

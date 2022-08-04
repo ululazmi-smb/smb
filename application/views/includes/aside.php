@@ -60,7 +60,7 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a href="<?php echo site_url('transaksi') ?>" class="nav-link <?php echo $uri == 'pengguna' ? 'active' : 'no' ?>">
+          <a href="<?php echo site_url('transaksi') ?>" class="nav-link <?php echo $uri == 'transaksi' ? 'active' : 'no' ?>">
             <i class="nav-icon fas fa-box"></i>
             <p>Transaksi Pembayaran</p>
           </a>
