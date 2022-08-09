@@ -11,12 +11,51 @@ class Pelanggan extends CI_Controller {
 		}
 		$this->load->model('Auth_model');
 		$this->load->model('pengguna_model');
+		$this->load->model('pelanggan_model');
 		$this->load->model('paket_perusahaan_model');
 	}
 
 	public function index()
 	{
 		$this->load->view('pelanggan');
+	}
+
+	public function get_user()
+	{
+		header('Content-type: application/json');
+		$key = $this->uri->segment(3);
+		$perusahaan = $this->session->userdata('id_perusahaan');
+		if($this->Auth_model->key($key) == false)
+		{
+			$data = array(
+				"id" => "error",
+				"messages" => "error auth api",
+			);
+			$pengguna1 = array();
+		} else {
+			if($this->pengguna_model->read($perusahaan)->num_rows() > 0)
+			{
+				foreach ($this->pelanggan_model->read($perusahaan)->result() as $pengguna) {
+					$pengguna1[] = array(
+						'id' => $pengguna->id_pelanggan,
+						'text' => $pengguna->nomor_tagihan." - ".$pengguna->nama_pelanggan
+					);
+				}
+				$data = array(
+					"error" => "success",
+					"data" => $pengguna
+				);
+			} else {
+				$pengguna1 = array();
+
+				$data = array(
+					"error" => "error",
+					"messages" => "error auth api",
+				);
+			}
+		}
+		echo json_encode($pengguna1);
+
 	}
 
 	public function read()

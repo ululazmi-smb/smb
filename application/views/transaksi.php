@@ -12,7 +12,9 @@
   <link rel="stylesheet" href="<?php echo base_url('assets/vendor/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') ?>">
   <link rel="stylesheet" href="<?php echo base_url('assets/vendor/adminlte/plugins/sweetalert2/sweetalert2.min.css') ?>">
   <link rel="stylesheet" href="<?php echo base_url('assets/vendor/adminlte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') ?>">
-  <?php $this->load->view('partials/head'); ?>
+  <link rel="stylesheet" href="<?php echo base_url('assets/vendor/adminlte/plugins/select2/css/select2.min.css') ?>">
+  <link rel="stylesheet" href="<?php echo base_url('assets/vendor/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') ?>">
+<?php $this->load->view('partials/head'); ?>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -74,7 +76,7 @@
               </select>
               <div class="input-group-prepend">
                 <button class="btn btn-success" onclick="start()">ambil tagihan</button>
-                <button class="btn btn-warning" data-toggle="modal" data-target="#modal" onclick="add()">buat tagihan</button>
+                <button class="btn btn-warning" data-toggle="modal" data-target="#modal">buat tagihan</button>
                 <button class="btn btn-success" onclick="generate()">Generate</button>
               </div>
             </div>
@@ -86,12 +88,12 @@
                   <th>No</th>
                   <th>No Tagihan</th>
                   <th>Nama</th>
-                  <th>Nama Paket</th>
+                  <th>Nama Tagihan</th>
                   <th>bulan/tahun</th>
                   <th>tagihan</th>
                   <th>jatuh tempo</th>
                   <th>status bayar</th>
-                  <th class="col-1">Action</th>
+                  <th class="col-3">Action</th>
                 </tr>
               </thead>
             </table>
@@ -172,9 +174,15 @@
         </div>
         <div class="form-group">
           <label>User Tagihan</label>
-          <div class="form-inline">
-            <select id="nama_user" class="form-control select2 col-sm-12" onchange="getNama()"></select>
-          </div>
+          <select id="nama_user" class="form-control select2 col-sm-12"></select>
+        </div>
+        <div class="form-group">
+          <label>Nama Tagihan</label>
+          <input id="nama_tagihan" type="text" class="form-control" placeholder="Nama Tagihan">
+        </div>
+        <div class="form-group">
+          <label>Jumlah</label>
+          <input id="jumlah_tagihan" type="text" class="form-control" placeholder="Jumlah Tagihan">
         </div>
         <button class="btn btn-success" onclick="save()">Save</button>
         <button class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -189,9 +197,12 @@
 <script src="<?php echo base_url('assets/vendor/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/vendor/adminlte/plugins/jquery-validation/jquery.validate.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/vendor/adminlte/plugins/sweetalert2/sweetalert2.min.js') ?>"></script>
+<script src="<?php echo base_url('assets/vendor/adminlte/plugins/select2/js/select2.min.js') ?>"></script>
+
 <script>
   var getDataStart = '<?php echo site_url('transaksi/read_transaksi/1') ?>';
   var urlGenerate = '<?php echo site_url('transaksi/generate/1') ?>';
+  var getUrlNama = '<?php echo site_url('pelanggan/get_user/1') ?>';
 </script>
 <script src="<?php echo base_url('assets/js/transaksi.min.js') ?>"></script>
 </body>

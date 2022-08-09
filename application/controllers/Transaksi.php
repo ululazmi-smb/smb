@@ -44,6 +44,12 @@ class Transaksi extends CI_Controller {
 					{
 						if($data->status == "active")
 						{
+							$data2 = array(
+								"id_pelanggan" => $data->id_pelanggan,
+								"nama_tagihan" => $data->paket,
+								"bulan_tahun" => $bulan.$tahun,
+								"id_perusahaan" => $perusahaan
+							);
 							$data = array(
 								"id_pelanggan" => $data->id_pelanggan,
 								"nama_tagihan" => $data->paket,
@@ -55,7 +61,7 @@ class Transaksi extends CI_Controller {
 								"status_bayar" => "0",
 								"id_perusahaan" => $perusahaan
 							);
-							if($this->Tagihan_user_model->cek_tagihan($data)->num_rows() > 0)
+							if($this->Tagihan_user_model->cek_tagihan($data2)->num_rows() > 0)
 							{
 								
 							} else {
@@ -110,8 +116,17 @@ class Transaksi extends CI_Controller {
 						if($ring->status_bayar == "0")
 						{
 							$status_bayar = "belum lunas";
-						} else if($ring->status_bayar == "0"){
+							$tombol = '<td align="center">
+							<button class="btn btn-sm btn-success btn-xs" onclick="bayar('."'".$ring->id."'".')">bayar</button>
+							<button class="btn btn-sm btn-danger btn-xs" onclick="remove('."'".$ring->id."'".')">delete</button></td>';
+						} else if($ring->status_bayar == "1"){
 							$status_bayar = "lunas";
+							$tombol = '
+							<td align="center">
+							<button class="btn btn-sm btn-danger btn-xs" onclick="remove('."'".$ring->id."'".')">delete</button>
+							<button class="btn btn-sm btn-success btn-xs" onclick="print('."'".$ring->id."'".')">print</button>
+							<button class="btn btn-sm btn-info btn-xs" onclick="remove('."'".$ring->id."'".')">message</button>
+							</td>';
 						}
 						if($this->pelanggan_model->read_pelanggan_by_id($ring->id_pelanggan, $perusahaan)->num_rows() > 0)
 						{
@@ -128,7 +143,7 @@ class Transaksi extends CI_Controller {
 								'tagihan' => $ring->jumlah_bayar,
 								'jatuh_tempo' => $ring->jatuh_tempo,
 								'status_bayar' => $status_bayar,
-								'action' => '<td align="center"><button class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal" onclick="edit('."'".$ring->id."'".')">Edit</button></td>'
+								'action' => $tombol
 							);
 						} else {
 							$data = array();
